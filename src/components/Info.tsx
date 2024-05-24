@@ -52,6 +52,8 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   line-height: 1.8;
+  font-size: large;
+  font-weight: 500;
 
   & > b {
     font-weight: var(--fw-bold);
@@ -62,28 +64,18 @@ interface InfoProps extends Country {
   push: NavigateFunction;
 }
 const InfoImpl = (props: InfoProps) => {
-  const {
-    name,
-    flag,
-    capital,
-    population,
-    region,
-    subregion,
-    topLevelDomain,
-    currencies = [],
-    languages = [],
-  } = props;
+  const {name, flags, capital, population, region, subregion} = props;
 
   return (
     <Wrapper>
-      <InfoImage src={flag} alt='flag' />
+      <InfoImage src={flags.png} alt='flag' />
 
       <div>
         <InfoTitle>{name.official}</InfoTitle>
         <ListGroup>
           <List>
             <ListItem>
-              <b>Population</b> {population}
+              <b>Population:</b> {population}
             </ListItem>
             <ListItem>
               <b>Region:</b> {region}
@@ -95,26 +87,7 @@ const InfoImpl = (props: InfoProps) => {
               <b>Capital:</b> {capital}
             </ListItem>
           </List>
-          <List>
-            <ListItem>
-              <b>Top Level Domain</b>
-              {topLevelDomain.map(d => (
-                <span key={d}>{d}</span>
-              ))}
-            </ListItem>
-            <ListItem>
-              <b>Currency</b>
-              {currencies.map(c => (
-                <span key={c.cod}>{c.name} </span>
-              ))}
-            </ListItem>
-            <ListItem>
-              <b>Top Level Domain</b>
-              {languages.map(l => (
-                <span key={l.name}>{l.name}</span>
-              ))}
-            </ListItem>
-          </List>
+          <List></List>
         </ListGroup>
       </div>
     </Wrapper>

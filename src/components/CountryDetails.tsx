@@ -12,7 +12,6 @@ interface CountryDetailsProps {
 const CountryDetailsImpl = ({name = '', navigate}: CountryDetailsProps) => {
   const {data, status, error} = useGetOneCountriQuery(name);
   const currentCountry = data ? data[0] : {};
-  console.log(data);
 
   return (
     <>
